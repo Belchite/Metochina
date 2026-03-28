@@ -1,0 +1,345 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="50%" stop-color="#0a1220" />
+      <stop offset="100%" stop-color="#0d1a2d" />
+    </linearGradient>
+
+    <!-- Central radial glow -->
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.05" />
+      <stop offset="40%" stop-color="#58a6ff" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#58a6ff" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Eye glow radial -->
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.2" />
+      <stop offset="60%" stop-color="#58a6ff" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#58a6ff" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Text gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9d1d9" />
+      <stop offset="100%" stop-color="#58a6ff" />
+    </linearGradient>
+
+    <!-- Accent line gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0" />
+      <stop offset="20%" stop-color="#58a6ff" stop-opacity="1" />
+      <stop offset="80%" stop-color="#1f6feb" stop-opacity="1" />
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Iris gradient -->
+    <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#1f6feb" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0d419d" stop-opacity="0.6" />
+    </radialGradient>
+
+    <!-- Scan line pattern -->
+    <pattern id="scanLines" x="0" y="0" width="4" height="2" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#58a6ff" opacity="0.03" />
+    </pattern>
+
+    <!-- Grid pattern -->
+    <pattern id="gridPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none" />
+      <line x1="40" y1="0" x2="40" y2="40" stroke="#58a6ff" stroke-width="0.3" opacity="0.06" />
+      <line x1="0" y1="40" x2="40" y2="40" stroke="#58a6ff" stroke-width="0.3" opacity="0.06" />
+    </pattern>
+
+    <!-- Glow filters -->
+    <filter id="glowSmall">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glowMed">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glowLarge">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glowXL">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Pill badge clip -->
+    <clipPath id="pillClip">
+      <rect x="0" y="0" width="60" height="22" rx="11" />
+    </clipPath>
+  </defs>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.08); }
+    }
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.2; r: 58; }
+      50% { opacity: 0.05; r: 68; }
+    }
+    @keyframes scanMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(300px); }
+    }
+    @keyframes blink {
+      0%, 90%, 100% { opacity: 0.4; }
+      95% { opacity: 0; }
+    }
+    @keyframes dataFlicker {
+      0%, 100% { opacity: 0.35; }
+      30% { opacity: 0.15; }
+      60% { opacity: 0.45; }
+      80% { opacity: 0.1; }
+    }
+    @keyframes crosshairRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes traceGlow {
+      0%, 100% { stroke-opacity: 0.15; }
+      50% { stroke-opacity: 0.4; }
+    }
+    .pulse-glow {
+      animation: pulse 3s ease-in-out infinite;
+      transform-origin: 220px 145px;
+    }
+    .pulse-ring {
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+    .scan-anim {
+      animation: scanMove 8s linear infinite;
+    }
+    .blink-cursor {
+      animation: blink 2s step-end infinite;
+    }
+    .data-flicker {
+      animation: dataFlicker 4s ease-in-out infinite;
+    }
+    .data-flicker-2 {
+      animation: dataFlicker 5s ease-in-out infinite 1s;
+    }
+    .data-flicker-3 {
+      animation: dataFlicker 3.5s ease-in-out infinite 0.5s;
+    }
+    .crosshair-spin {
+      animation: crosshairRotate 20s linear infinite;
+      transform-origin: 220px 145px;
+    }
+    .trace-anim {
+      animation: traceGlow 4s ease-in-out infinite;
+    }
+    .trace-anim-2 {
+      animation: traceGlow 4s ease-in-out infinite 2s;
+    }
+  </style>
+
+  <!-- ====== BACKGROUND LAYERS ====== -->
+
+  <!-- Base gradient -->
+  <rect width="900" height="300" fill="url(#bgGrad)" />
+
+  <!-- Central radial glow -->
+  <rect width="900" height="300" fill="url(#centerGlow)" />
+
+  <!-- Grid overlay -->
+  <rect width="900" height="300" fill="url(#gridPattern)" />
+
+  <!-- Scan lines overlay -->
+  <rect width="900" height="300" fill="url(#scanLines)" />
+
+  <!-- Moving scan bar -->
+  <g class="scan-anim" opacity="0.06">
+    <rect x="0" y="0" width="900" height="3" fill="#58a6ff" />
+    <rect x="0" y="-1" width="900" height="5" fill="#58a6ff" opacity="0.3" />
+  </g>
+
+  <!-- ====== CIRCUIT TRACES - LEFT SIDE ====== -->
+  <g class="trace-anim" stroke="#58a6ff" stroke-width="1" fill="none">
+    <!-- Left circuit traces -->
+    <polyline points="0,60 40,60 55,75 55,120 70,135" opacity="0.2" />
+    <polyline points="0,80 30,80 45,95 45,110" opacity="0.15" />
+    <polyline points="0,200 35,200 50,185 50,170 65,155" opacity="0.2" />
+    <polyline points="0,230 25,230 40,215 40,195" opacity="0.15" />
+    <!-- Trace nodes -->
+    <circle cx="70" cy="135" r="2.5" fill="#58a6ff" opacity="0.3" />
+    <circle cx="45" cy="110" r="2" fill="#58a6ff" opacity="0.25" />
+    <circle cx="65" cy="155" r="2.5" fill="#58a6ff" opacity="0.3" />
+    <circle cx="40" cy="195" r="2" fill="#58a6ff" opacity="0.25" />
+  </g>
+
+  <!-- ====== CIRCUIT TRACES - RIGHT SIDE ====== -->
+  <g class="trace-anim-2" stroke="#58a6ff" stroke-width="1" fill="none">
+    <polyline points="900,70 860,70 845,85 845,125 830,140" opacity="0.2" />
+    <polyline points="900,100 870,100 855,115 855,130" opacity="0.15" />
+    <polyline points="900,210 865,210 850,195 850,175 835,160" opacity="0.2" />
+    <polyline points="900,240 875,240 860,225 860,200" opacity="0.15" />
+    <!-- Trace nodes -->
+    <circle cx="830" cy="140" r="2.5" fill="#58a6ff" opacity="0.3" />
+    <circle cx="855" cy="130" r="2" fill="#58a6ff" opacity="0.25" />
+    <circle cx="835" cy="160" r="2.5" fill="#58a6ff" opacity="0.3" />
+    <circle cx="860" cy="200" r="2" fill="#58a6ff" opacity="0.25" />
+  </g>
+
+  <!-- ====== CORNER TARGETING BRACKETS ====== -->
+  <g stroke="#58a6ff" stroke-width="1.5" fill="none" opacity="0.35">
+    <!-- Top-left corner -->
+    <polyline points="25,15 15,15 15,25" />
+    <polyline points="40,15 15,15" stroke-width="0.5" opacity="0.15" />
+    <!-- Top-right corner -->
+    <polyline points="875,15 885,15 885,25" />
+    <!-- Bottom-left corner -->
+    <polyline points="25,285 15,285 15,275" />
+    <!-- Bottom-right corner -->
+    <polyline points="875,285 885,285 885,275" />
+  </g>
+
+  <!-- ====== EYE ICON WITH CROSSHAIR ====== -->
+  <g transform="translate(220, 145)">
+
+    <!-- Outer pulsing glow -->
+    <circle cx="0" cy="0" r="70" fill="#58a6ff" opacity="0.03" class="pulse-glow" />
+    <circle cx="0" cy="0" r="60" fill="url(#eyeGlow)" />
+
+    <!-- Animated pulse ring -->
+    <circle cx="0" cy="0" class="pulse-ring" fill="none" stroke="#58a6ff" stroke-width="1" opacity="0.2" r="58" />
+
+    <!-- Geometric outer eye shape (polygonal) -->
+    <path d="M-65,0 L-40,-28 L-15,-38 L0,-40 L15,-38 L40,-28 L65,0 L40,28 L15,38 L0,40 L-15,38 L-40,28 Z"
+          fill="none" stroke="#58a6ff" stroke-width="1.5" opacity="0.5" filter="url(#glowSmall)" />
+
+    <!-- Inner eye shape -->
+    <path d="M-50,0 Q-25,-30 0,-33 Q25,-30 50,0 Q25,30 0,33 Q-25,30 -50,0 Z"
+          fill="none" stroke="#c9d1d9" stroke-width="1.2" opacity="0.4" />
+
+    <!-- Iris outer ring -->
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#58a6ff" stroke-width="2" opacity="0.7" filter="url(#glowSmall)" />
+
+    <!-- Iris fill -->
+    <circle cx="0" cy="0" r="20" fill="url(#irisGrad)" opacity="0.25" />
+
+    <!-- Iris detail rings -->
+    <circle cx="0" cy="0" r="16" fill="none" stroke="#58a6ff" stroke-width="0.5" opacity="0.3" />
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#58a6ff" stroke-width="0.5" opacity="0.25" />
+
+    <!-- Crosshair in center -->
+    <g opacity="0.8">
+      <line x1="0" y1="-18" x2="0" y2="-8" stroke="#58a6ff" stroke-width="1.5" />
+      <line x1="0" y1="8" x2="0" y2="18" stroke="#58a6ff" stroke-width="1.5" />
+      <line x1="-18" y1="0" x2="-8" y2="0" stroke="#58a6ff" stroke-width="1.5" />
+      <line x1="8" y1="0" x2="18" y2="0" stroke="#58a6ff" stroke-width="1.5" />
+    </g>
+
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="3" fill="#58a6ff" opacity="0.9" filter="url(#glowSmall)" />
+
+    <!-- Light reflection -->
+    <circle cx="7" cy="-7" r="2" fill="#ffffff" opacity="0.5" />
+    <circle cx="4" cy="-5" r="1" fill="#ffffff" opacity="0.3" />
+
+    <!-- Slowly rotating outer crosshair marks -->
+    <g class="crosshair-spin" opacity="0.25">
+      <line x1="220" y1="113" x2="220" y2="119" stroke="#58a6ff" stroke-width="1" transform="translate(-220,-145)" />
+      <line x1="220" y1="171" x2="220" y2="177" stroke="#58a6ff" stroke-width="1" transform="translate(-220,-145)" />
+      <line x1="188" y1="145" x2="194" y2="145" stroke="#58a6ff" stroke-width="1" transform="translate(-220,-145)" />
+      <line x1="246" y1="145" x2="252" y2="145" stroke="#58a6ff" stroke-width="1" transform="translate(-220,-145)" />
+    </g>
+
+    <!-- Geometric accent lines around eye -->
+    <line x1="-70" y1="0" x2="-55" y2="0" stroke="#58a6ff" stroke-width="0.8" opacity="0.2" />
+    <line x1="55" y1="0" x2="70" y2="0" stroke="#58a6ff" stroke-width="0.8" opacity="0.2" />
+    <line x1="0" y1="-45" x2="0" y2="-38" stroke="#58a6ff" stroke-width="0.8" opacity="0.15" />
+    <line x1="0" y1="38" x2="0" y2="45" stroke="#58a6ff" stroke-width="0.8" opacity="0.15" />
+  </g>
+
+  <!-- ====== MAIN TEXT ====== -->
+
+  <!-- METOCHINA title -->
+  <text x="450" y="120" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="52" font-weight="700" fill="url(#textGrad)" letter-spacing="12"
+        filter="url(#glowMed)" text-anchor="middle" dominant-baseline="middle"
+        transform="translate(110, 0)">METOCHINA</text>
+
+  <!-- Subtitle -->
+  <text x="560" y="162" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="13" font-weight="400" fill="#8b949e" letter-spacing="5"
+        text-anchor="middle">OSINT IMAGE METADATA ANALYZER</text>
+
+  <!-- Thin separator -->
+  <line x1="420" y1="180" x2="700" y2="180" stroke="#1c2333" stroke-width="1" />
+
+  <!-- Version pill badge -->
+  <g transform="translate(530, 192)">
+    <rect x="0" y="0" width="56" height="22" rx="11" fill="none" stroke="#30363d" stroke-width="1" />
+    <rect x="0" y="0" width="56" height="22" rx="11" fill="#58a6ff" opacity="0.07" />
+    <text x="28" y="15" font-family="'Consolas', 'Courier New', monospace"
+          font-size="11" fill="#58a6ff" text-anchor="middle" opacity="0.8">v1.0.0</text>
+  </g>
+
+  <!-- Tagline below badge -->
+  <text x="560" y="235" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="10" fill="#484f58" letter-spacing="3" text-anchor="middle">EXTRACT  &#x2022;  ANALYZE  &#x2022;  REPORT</text>
+
+  <!-- ====== BINARY/HEX DATA FRAGMENTS ====== -->
+  <g font-family="'Consolas', 'Courier New', monospace" font-size="9">
+    <!-- Top-left -->
+    <text x="30" y="38" fill="#58a6ff" class="data-flicker" opacity="0.35">0x4558 4946</text>
+    <text x="30" y="52" fill="#3b4754" class="data-flicker" opacity="0.25">45 58 49 46</text>
+
+    <!-- Top-right -->
+    <text x="790" y="38" fill="#58a6ff" class="data-flicker-2" opacity="0.3">4750 5300</text>
+    <text x="790" y="52" fill="#3b4754" class="data-flicker-2" opacity="0.2">GPS_DATA</text>
+
+    <!-- Bottom-left -->
+    <text x="30" y="265" fill="#3b4754" class="data-flicker-3" opacity="0.25">ff d8 ff e1</text>
+    <text x="30" y="278" fill="#58a6ff" class="data-flicker-3" opacity="0.3">JPEG_HDR</text>
+
+    <!-- Bottom-right -->
+    <text x="790" y="265" fill="#58a6ff" class="data-flicker" opacity="0.3">0x0112</text>
+    <text x="790" y="278" fill="#3b4754" class="data-flicker" opacity="0.2">ORIENT_TAG</text>
+
+    <!-- Center-bottom scattered -->
+    <text x="350" y="278" fill="#3b4754" class="data-flicker-2" opacity="0.15">00 1a 00 2f c8</text>
+    <text x="680" y="278" fill="#3b4754" class="data-flicker-3" opacity="0.12">META::EXIF</text>
+  </g>
+
+  <!-- ====== ACCENT LINE NEAR BOTTOM ====== -->
+  <rect x="0" y="288" width="900" height="1.5" fill="url(#accentGrad)" opacity="0.8" />
+
+  <!-- Top thin accent line -->
+  <rect x="0" y="0" width="900" height="1.5" fill="url(#accentGrad)" opacity="0.5" />
+
+  <!-- ====== DECORATIVE HORIZONTAL LINES ====== -->
+  <g opacity="0.08" stroke="#58a6ff" stroke-width="0.5">
+    <line x1="100" y1="90" x2="340" y2="90" />
+    <line x1="110" y1="200" x2="330" y2="200" />
+  </g>
+
+  <!-- Small dot accents -->
+  <circle cx="100" cy="90" r="1.5" fill="#58a6ff" opacity="0.2" />
+  <circle cx="340" cy="90" r="1.5" fill="#58a6ff" opacity="0.2" />
+  <circle cx="110" cy="200" r="1.5" fill="#58a6ff" opacity="0.2" />
+  <circle cx="330" cy="200" r="1.5" fill="#58a6ff" opacity="0.2" />
+
+</svg>

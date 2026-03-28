@@ -1,0 +1,66 @@
+MIT License
+
+Copyright (c) 2024 Metochina Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+ADDITIONAL OSINT DISCLAIMER CLAUSE
+
+This software is an Open Source Intelligence (OSINT) tool designed and intended
+exclusively for legitimate purposes, including but not limited to: authorized
+security research and penetration testing, digital forensics, investigative
+journalism conducted in the public interest, academic research, and education.
+
+The authors and contributors of this software are NOT responsible for any
+misuse, illegal activity, unauthorized surveillance, or damage caused by the
+use of this tool. Users bear sole and complete responsibility for ensuring
+that their use of this software complies with all applicable local, state,
+national, and international laws and regulations, including but not limited to
+data protection laws (GDPR, CCPA, LGPD), computer fraud and abuse statutes,
+and privacy legislation.
+
+By downloading, installing, or using this software, you acknowledge and agree
+that:
+
+1. You will NOT use this software for stalking, harassment, doxxing,
+   unauthorized surveillance, or any activity that violates the privacy rights
+   of individuals without proper legal authorization.
+
+2. You will NOT use this software to facilitate any illegal activity or to
+   cause harm to any person or organization.
+
+3. You will obtain proper written authorization before analyzing any images,
+   files, or data that you do not own or do not have explicit permission to
+   analyze.
+
+4. You accept full liability for any consequences, legal or otherwise, arising
+   from your use of this software.
+
+5. You will handle any personally identifiable information discovered through
+   metadata analysis with appropriate care, discretion, and in compliance with
+   applicable data protection regulations.
+
+6. This software performs local analysis only and does not transmit data to
+   external services. Any network-related functionality (such as generated map
+   URLs) is informational only and does not constitute data exfiltration.
+
+The authors reserve the right to modify this disclaimer at any time. Continued
+use of the software constitutes acceptance of any such modifications.
